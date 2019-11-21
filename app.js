@@ -5,7 +5,9 @@ document.getElementById("loan-form").addEventListener("submit", computeResults);
 function computeResults(e) {
   // UI
   const UIamount = document.getElementById("amount").value;
+
   const UIinterest = document.getElementById("interest").value;
+
   const UIyears = document.getElementById("years").value;
 
   // Calculate
@@ -15,7 +17,7 @@ function computeResults(e) {
 
   // Computing Monthly Payments
   const x = Math.pow(1 + calcInterest, calcdPayments);
-  const monthly = (principal * x * calcInterest) / (x-1);
+  const monthly = (principal * x * calcInterest) / (x - 1);
   const monthlyPayment = monthly.toFixed(2);
 
   // Compute Interest
@@ -25,7 +27,11 @@ function computeResults(e) {
   const totalPayment = (monthly * calcdPayments).toFixed(2);
 
   // Show Results
-  
+  document.getElementById("monthlyPayment").innerHTML = "$" + monthlyPayment;
+
+  document.getElementById("totalInterest").innerHTML = "%" + totalInterest;
+
+  document.getElementById("totalPayment").innerHTML = "$" + totalPayment;
 
   e.preventDefault();
 }
